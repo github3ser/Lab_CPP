@@ -6,8 +6,11 @@ import os
 def before_all(context):
     print("=== before_all is running ===")
 
-    chrome_path = os.path.join(os.getcwd(), "chrome-win64", "chrome.exe")
-    driver_path = os.path.join(os.getcwd(), "chromedriver-win64", "chromedriver.exe")
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(current_dir, "..", ".."))
+
+    driver_path = os.path.join(project_root, "chromedriver-win64", "chromedriver.exe")
+    chrome_path = os.path.join(project_root, "chrome-win64", "chrome.exe")
 
     if not os.path.exists(chrome_path):
         print(f"Chrome for Testing nu a fost găsit: {chrome_path}")
